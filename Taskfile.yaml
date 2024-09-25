@@ -1,0 +1,19 @@
+version: 3
+
+tasks:
+  http_server:
+    cmds:
+      - bin/http_server {{.CLI_ARGS}}
+    deps:
+      - build_http_server
+    method: none
+    silent: true
+
+  build_http_server:
+    cmds:
+      - odin build http_server -out:bin/http_server -o:none -debug
+    sources:
+      - ./http_server/**/*.odin
+    generates:
+      - bin/http_server
+    silent: true
