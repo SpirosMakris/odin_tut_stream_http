@@ -17,3 +17,5 @@ tasks:
     generates:
       - bin/http_server
     silent: true
+
+interval: 100ms
