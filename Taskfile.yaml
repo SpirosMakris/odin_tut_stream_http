@@ -14,8 +14,9 @@ tasks:
       - odin build http_server -out:bin/http_server -o:none -debug
     sources:
       - ./http_server/**/*.odin
+      - ./tokenization/**/*.odin
     generates:
       - bin/http_server
     silent: true
 
-interval: 100ms
+interval: 200ms

@@ -48,6 +48,9 @@ main :: proc() {
 
 	b: bytes.Buffer
 	bytes.buffer_init_allocator(&b, 0, 2048)
+	defer bytes.buffer_destroy(&b)
+
+	// Create a default response
 	bytes.buffer_write_string(&b, "HTTP/1.1 200 OK\r\n")
 	bytes.buffer_write_string(&b, "Content-Type: text/html; charset=UTF-8\r\n")
 	bytes.buffer_write_string(&b, "\r\n")
@@ -97,6 +100,8 @@ main :: proc() {
 
             bytes_received = n
         }
+
+		// @TODO: Parse request
 
 		bytes_written, send_err := net.send_tcp(client_socket, welcome_message)
 		if send_err != nil {
